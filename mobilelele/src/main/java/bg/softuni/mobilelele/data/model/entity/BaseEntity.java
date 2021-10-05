@@ -48,6 +48,12 @@ public class BaseEntity {
     @PrePersist
     public  void beforeCreate() {
         this.created = Instant.now();
+        System.out.println("PRE _______________________________");
     }
 
+    @PostPersist
+    public void onUpdate() {
+        this.modified = Instant.now();
+        System.out.println("POST ___________________________");
+    }
 }
