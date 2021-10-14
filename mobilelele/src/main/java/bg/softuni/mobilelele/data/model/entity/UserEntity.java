@@ -4,25 +4,30 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity{
 
-    @Column(nullable = false, unique = true)
+    @Column(unique = true, nullable = false)
     private String username;
 
+    @Column
     private String password;
 
+    @Column
     private String firstName;
 
+    @Column
     private String lastName;
 
+    @Column
     private boolean isActive;
 
     @ManyToMany
-    private List<UserRoleEntity> roles;
+    private List<UserRoleEntity> roles = new ArrayList<>();
 
 
     public String getUsername() {

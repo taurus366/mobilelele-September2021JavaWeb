@@ -47,6 +47,10 @@ public class UserServiceImpl implements UserService {
            if (success){
                UserEntity loggedInUser = userEntityOpt.get();
                currentUser.setLoggedIn(true).setUserName(loggedInUser.getUsername()).setFirstName(loggedInUser.getFirstName()).setLastName(loggedInUser.getLastName());
+
+                loggedInUser.getRoles()
+                        .forEach(r -> currentUser.addRole(r.getRole()));
+
            }
 
            return success;

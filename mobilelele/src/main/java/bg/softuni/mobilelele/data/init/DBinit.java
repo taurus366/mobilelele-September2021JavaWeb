@@ -53,6 +53,8 @@ public class DBinit implements CommandLineRunner {
             UserRoleEntity adminRole = userRoleRepository.findByRole(UserRoleEnum.ADMIN);
             UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
 
+
+
             UserEntity admin = new UserEntity();
             admin.setActive(true)
                     .setUsername("taurus366")
@@ -64,12 +66,12 @@ public class DBinit implements CommandLineRunner {
             userRepository.save(admin);
 
             UserEntity user = new UserEntity();
-            admin.setActive(true)
-                    .setUsername("taurus36")
+            user.setActive(true)
+                    .setUsername("taurus")
                     .setFirstName("user")
                     .setLastName("userov")
                     .setRoles(List.of(userRole))
-                    .setPassword(passwordEncoder.encode("TODO"));
+                    .setPassword(passwordEncoder.encode("taurus"));
 
             userRepository.save(user);
 
