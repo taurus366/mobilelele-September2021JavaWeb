@@ -2,13 +2,12 @@ package bg.softuni.mobilelele.data.init;
 
 import bg.softuni.mobilelele.data.enums.CategoryEnum;
 import bg.softuni.mobilelele.data.enums.UserRoleEnum;
-import bg.softuni.mobilelele.data.model.entity.BrandEntity;
-import bg.softuni.mobilelele.data.model.entity.ModelEntity;
-import bg.softuni.mobilelele.data.model.entity.UserEntity;
-import bg.softuni.mobilelele.data.model.entity.UserRoleEntity;
+import bg.softuni.mobilelele.data.model.entity.*;
 import bg.softuni.mobilelele.data.repository.BrandRepository;
+import bg.softuni.mobilelele.data.repository.OfferRepository;
 import bg.softuni.mobilelele.data.repository.UserRepository;
 import bg.softuni.mobilelele.data.repository.UserRoleRepository;
+import bg.softuni.mobilelele.data.service.impl.OfferServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.CommandLineRunner;
@@ -26,13 +25,17 @@ public class DBinit implements CommandLineRunner {
     private final ObjectMapper objectMapper;
     private final PasswordEncoder passwordEncoder;
     private final UserRoleRepository userRoleRepository;
+    private final OfferRepository offerRepository;
+    private final OfferServiceImpl offerService;
 
-    public DBinit(BrandRepository brandRepository, UserRepository userRepository, ObjectMapper objectMapper, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
+    public DBinit(BrandRepository brandRepository, UserRepository userRepository, ObjectMapper objectMapper, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository, OfferRepository offerRepository, OfferServiceImpl offerService) {
         this.brandRepository = brandRepository;
         this.userRepository = userRepository;
         this.objectMapper = objectMapper;
         this.passwordEncoder = passwordEncoder;
         this.userRoleRepository = userRoleRepository;
+        this.offerRepository = offerRepository;
+        this.offerService = offerService;
     }
 
 
@@ -42,8 +45,15 @@ public class DBinit implements CommandLineRunner {
         initializeBrandAndModels();
         initializeRoles();
         initializaUsers();
+        initializeOffers();
 
 
+    }
+
+    private void initializeOffers() {
+     if (offerRepository.count() == 0){
+        offerService.initializedOffers();
+     }
     }
 
     private void initializaUsers() {

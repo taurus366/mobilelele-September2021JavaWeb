@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 
 public class OfferSummaryView {
 
+    private long id;
     private String description;
     private EngineTypeEnum engine;
     private String imageUrl;
@@ -20,6 +21,15 @@ public class OfferSummaryView {
     private String transmission;
     private int year;
     private String model;
+
+    public long getId() {
+        return id;
+    }
+
+    public OfferSummaryView setId(long id) {
+        this.id = id;
+        return this;
+    }
 
     public String getDescription() {
         return description;
