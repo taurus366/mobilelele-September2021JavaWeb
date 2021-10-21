@@ -1,46 +1,31 @@
-package bg.softuni.pathfinder.model.entity;
+package bg.softuni.pathfinder.model.service;
 
+import bg.softuni.pathfinder.model.entity.Role;
 import bg.softuni.pathfinder.model.entity.enums.LevelEnum;
 
-import javax.persistence.*;
 import java.util.Set;
 
+public class UserServiceModel {
 
-@Entity
-@Table(name = "users")
-public class User extends BaseEntity{
 
-    @Column
-    private Integer age;
-
-    @Column(nullable = false)
+    private Long id;
     private String fullName;
-
-    @Column(nullable = false,unique = true)
     private String username;
-
-    @Column(nullable = false)
     private String password;
-
-    @Column()
     private String email;
-
-    @Enumerated(EnumType.STRING)
+    private Integer age;
     private LevelEnum level;
-
-
-    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    public User(){
+    public UserServiceModel() {
     }
 
-    public Integer getAge() {
-        return age;
+    public Long getId() {
+        return id;
     }
 
-    public User setAge(Integer age) {
-        this.age = age;
+    public UserServiceModel setId(Long id) {
+        this.id = id;
         return this;
     }
 
@@ -48,7 +33,7 @@ public class User extends BaseEntity{
         return fullName;
     }
 
-    public User setFullName(String fullName) {
+    public UserServiceModel setFullName(String fullName) {
         this.fullName = fullName;
         return this;
     }
@@ -57,7 +42,7 @@ public class User extends BaseEntity{
         return username;
     }
 
-    public User setUsername(String username) {
+    public UserServiceModel setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -66,7 +51,7 @@ public class User extends BaseEntity{
         return password;
     }
 
-    public User setPassword(String password) {
+    public UserServiceModel setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -75,8 +60,17 @@ public class User extends BaseEntity{
         return email;
     }
 
-    public User setEmail(String email) {
+    public UserServiceModel setEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public UserServiceModel setAge(Integer age) {
+        this.age = age;
         return this;
     }
 
@@ -84,7 +78,7 @@ public class User extends BaseEntity{
         return level;
     }
 
-    public User setLevel(LevelEnum level) {
+    public UserServiceModel setLevel(LevelEnum level) {
         this.level = level;
         return this;
     }
@@ -93,7 +87,7 @@ public class User extends BaseEntity{
         return roles;
     }
 
-    public User setRoles(Set<Role> roles) {
+    public UserServiceModel setRoles(Set<Role> roles) {
         this.roles = roles;
         return this;
     }
