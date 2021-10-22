@@ -1,0 +1,48 @@
+hibernate:
+    dialect: org.hibernate.dialect.MySQLDialect
+info:
+    app:
+        description: This sample application allows to manage articles and users
+        name: Post repository application
+        version: 1.0.0
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: DEBUG
+            type:
+                descriptor:
+                    sql:
+                        BasicBinder: TRACE
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: info, health, httptrace, metrics, threaddump, heapdump, shutdown,
+                    beans, mappings
+    trace:
+        http:
+            enabled: true
+server:
+    port: 8080
+spring:
+    datasource:
+        driverClassName: com.mysql.cj.jdbc.Driver
+        password: admin
+        url: jdbc:mysql://localhost:3306/mobilelele?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+        username: admin
+    jpa:
+        database: mysql
+        hibernate:
+            ddl-auto: validate
+            dialect: org.hibernate.dialect.MySQL8Dialect
+            format_sql: true
+            show_sql: true
+            use_sql_comments: true
+    mvc:
+        hiddenmethod:
+            filter:
+                enabled: true
