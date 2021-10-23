@@ -2,19 +2,37 @@ package bg.softuni.mobilelele.data.model.binding;
 
 import bg.softuni.mobilelele.data.enums.EngineTypeEnum;
 import bg.softuni.mobilelele.data.enums.TransmissionTypeEnum;
+import org.springframework.beans.factory.annotation.Value;
 
-import java.time.Instant;
+import javax.validation.constraints.*;
 
 public class OfferUpdateBindingModel {
 
     private Long id;
+
+    @NotBlank
     private String description;
-    private EngineTypeEnum engineTypeEnum;
+
+    @NotNull
+    private EngineTypeEnum engine;
+
+    @NotBlank
     private String imageUrl;
-    private int mileage;
-    private int price;
+
+    @NotNull
+    @PositiveOrZero
+    private Integer mileage;
+
+    @NotNull
+    @Min(100)
+    private Integer price;
+
+    @NotNull
     private TransmissionTypeEnum transmission;
-    private int year;
+
+    @NotNull
+    @Min(1930)
+    private Integer year;
 
     public OfferUpdateBindingModel() {
     }
@@ -35,12 +53,12 @@ public class OfferUpdateBindingModel {
         this.description = description;
     }
 
-    public EngineTypeEnum getEngineTypeEnum() {
-        return engineTypeEnum;
+    public EngineTypeEnum getEngine() {
+        return engine;
     }
 
-    public void setEngineTypeEnum(EngineTypeEnum engineTypeEnum) {
-        this.engineTypeEnum = engineTypeEnum;
+    public void setEngine(EngineTypeEnum engine) {
+        this.engine = engine;
     }
 
     public String getImageUrl() {

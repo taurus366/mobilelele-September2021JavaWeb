@@ -23,7 +23,7 @@ public class UserRegistrationController {
 
     public UserRegistrationController(UserService userService, ModelMapper modelMapper
 //            , Model model
-            ) {
+    ) {
         this.userService = userService;
         this.modelMapper = modelMapper;
 //        this.model = model;
@@ -36,35 +36,35 @@ public class UserRegistrationController {
     }
 
     @ModelAttribute("userModel")
-    public UserRegisterationBindingModel userRegisterationBindingModel(){
-    return new UserRegisterationBindingModel();
+    public UserRegisterationBindingModel userRegisterationBindingModel() {
+        return new UserRegisterationBindingModel();
     }
 
-/*    @VALID validate the UserRegisterationBindingModel parameters like @Size or @NotNull and etc.
-      BindingResult works together with @Valid
-      RedirectAttributes has addFlashAttribute it saves the attribute after redirect.
- */
+    /*    @VALID validate the UserRegisterationBindingModel parameters like @Size or @NotNull and etc.
+          BindingResult works together with @Valid
+          RedirectAttributes has addFlashAttribute it saves the attribute after redirect.
+     */
     @PostMapping("/users/register")
     public String registerNewUser(@Valid UserRegisterationBindingModel userModel, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         //TODO: validation
 
-        if (bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("userModel",userModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel",bindingResult);
+        if (bindingResult.hasErrors() || !userModel.getPassword().equals(userModel.getConfirmPassword())) {
+            redirectAttributes.addFlashAttribute("userModel", userModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userModel", bindingResult);
             return "redirect:/users/register";
         }
 
         UserRegistrationServiceModel serviceModel = modelMapper.map(userModel, UserRegistrationServiceModel.class);
         //TODO: add with flash attribute
-        if (!userService.isUsernameFree(serviceModel.getUsername())) {
-            System.out.println("username exists");
-//            model.addAttribute("userNameNotFree", true);
-            return "redirect:/users/register";
-        } else {
-            System.out.println("username is not exists!");
-            userService.registerAndLoginUser(serviceModel);
-        }
+//        if (!userService.isUsernameFree(serviceModel.getUsername())) {
+//            System.out.println("username exists");
+////            model.addAttribute("userNameNotFree", true);
+//            return "redirect:/users/register";
+//        } else {
+//            System.out.println("username is not exists!");
+//        }
+        userService.registerAndLoginUser(serviceModel);
 
         return "redirect:/";
     }

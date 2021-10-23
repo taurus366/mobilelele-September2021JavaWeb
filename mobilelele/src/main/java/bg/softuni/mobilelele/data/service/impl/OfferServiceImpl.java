@@ -14,6 +14,7 @@ import bg.softuni.mobilelele.data.web.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -85,8 +86,16 @@ public class OfferServiceImpl implements OfferService {
     public void updateOffer(OfferUpdateServiceModel offerModel) {
 
         OfferEntity offerEntity = offerRepository.findById(offerModel.getId()).orElseThrow(() -> new ObjectNotFoundException("Offer with id " + offerModel.getId() + " not found"));
-
-        offerEntity.setPrice(offerModel.getPrice());
+        System.out.println(offerModel.getEngine());
+        offerEntity
+                .setPrice(offerModel.getPrice())
+                .setDescription(offerModel.getDescription())
+                .setEngine(offerModel.getEngine())
+                .setImageUrl(offerModel.getImageUrl())
+                .setMileage(offerModel.getMileage())
+                .setTransmission(offerModel.getTransmission())
+                .setYear(offerModel.getYear())
+                .setModified(Instant.now());
 
         offerRepository.save(offerEntity);
     }

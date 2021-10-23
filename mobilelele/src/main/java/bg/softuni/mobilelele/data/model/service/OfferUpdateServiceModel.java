@@ -8,7 +8,7 @@ import java.time.Instant;
 public class OfferUpdateServiceModel {
 
     private String description;
-    private EngineTypeEnum engineTypeEnum;
+    private EngineTypeEnum engine;
     private Instant created;
     private Instant modified;
     private String imageUrl;
@@ -32,12 +32,12 @@ public class OfferUpdateServiceModel {
         this.description = description;
     }
 
-    public EngineTypeEnum getEngineTypeEnum() {
-        return engineTypeEnum;
+    public EngineTypeEnum getEngine() {
+        return engine;
     }
 
-    public void setEngineTypeEnum(EngineTypeEnum engineTypeEnum) {
-        this.engineTypeEnum = engineTypeEnum;
+    public void setEngine(EngineTypeEnum engine) {
+        this.engine = engine;
     }
 
     public Instant getCreated() {
