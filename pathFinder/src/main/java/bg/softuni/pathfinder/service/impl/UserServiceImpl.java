@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void loginUser(Long id, String username) {
-        System.out.println("logged user");
             currentUser.setUsername(username)
                     .setId(id);
 
@@ -54,7 +53,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Object findById(Long id) {
+    public UserServiceModel findById(Long id) {
         return userRepository.findById(id)
                 .map(user -> modelMapper.map(user,UserServiceModel.class))
                 .orElse(null);
@@ -67,5 +66,11 @@ public class UserServiceImpl implements UserService {
         return userRepository
                 .findByUsername(username)
                 .isPresent();
+    }
+
+    @Override
+    public User findCurrentLoginUserEntity() {
+        return userRepository.findById(currentUser.getId())
+                .orElse(null);
     }
 }

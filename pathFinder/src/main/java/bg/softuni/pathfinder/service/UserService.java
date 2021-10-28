@@ -1,5 +1,6 @@
 package bg.softuni.pathfinder.service;
 
+import bg.softuni.pathfinder.model.entity.User;
 import bg.softuni.pathfinder.model.service.UserServiceModel;
 
 public interface UserService {
@@ -11,7 +12,9 @@ public interface UserService {
 
     void logout();
 
-    Object findById(Long id);
+    UserServiceModel findById(Long id);
 
     boolean isNameExists(String username);
+
+    User findCurrentLoginUserEntity();
 }

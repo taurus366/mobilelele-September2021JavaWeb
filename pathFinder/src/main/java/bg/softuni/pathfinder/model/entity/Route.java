@@ -36,6 +36,24 @@ public class Route extends BaseEntity {
     public Route() {
     }
 
+    public String getGpxCoordinates() {
+        return gpxCoordinates;
+    }
+
+    public Route setGpxCoordinates(String gpxCoordinates) {
+        this.gpxCoordinates = gpxCoordinates;
+        return this;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public Route setCategories(Set<Category> categories) {
+        this.categories = categories;
+        return this;
+    }
+
     public String getDescription() {
         return description;
     }
