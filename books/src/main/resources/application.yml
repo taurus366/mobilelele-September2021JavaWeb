@@ -1,0 +1,23 @@
+logging:
+    level:
+        blog: WARN
+        org: WARN
+        org.hibernate.SQL: DEBUG
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: user
+        url: jdbc:mysql://localhost:3306/books?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
+        username: user
+    jpa:
+        hibernate:
+            ddl-auto: validate
+        open-in-view: false
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL8Dialect
+                format_sql: true
+    mvc:
+        hiddenmethod:
+            filter:
+                enabled: true

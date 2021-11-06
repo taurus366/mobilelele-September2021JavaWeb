@@ -1,5 +1,6 @@
 package bg.softuni.pathfinder.service.impl;
 
+import bg.softuni.pathfinder.model.entity.BaseEntity;
 import bg.softuni.pathfinder.model.entity.Route;
 import bg.softuni.pathfinder.model.service.RouteServiceModel;
 import bg.softuni.pathfinder.model.view.RouteDetailsViewModel;
