@@ -31,9 +31,9 @@ server:
 spring:
     datasource:
         driverClassName: com.mysql.cj.jdbc.Driver
-        password: admin
+        password: user
         url: jdbc:mysql://localhost:3306/mobilelele?useSSL=false&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
-        username: admin
+        username: user
     jpa:
         database: mysql
         hibernate:

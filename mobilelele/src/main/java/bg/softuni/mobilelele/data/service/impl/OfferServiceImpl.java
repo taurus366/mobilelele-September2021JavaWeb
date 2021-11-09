@@ -43,7 +43,7 @@ public class OfferServiceImpl implements OfferService {
                 .setMileage(200000)
                 .setModel(modelRepository.findById(1L).orElse(null))
                 .setPrice(222)
-                .setSeller(userRepository.findByUsername("taurus366"))
+                .setSeller(userRepository.findByUsername("taurus366").get())
                 .setTransmission(TransmissionTypeEnum.AUTOMATIC)
                 .setYear(1995);
         offerRepository.save(offer1);
@@ -56,7 +56,7 @@ public class OfferServiceImpl implements OfferService {
                 .setMileage(2000)
                 .setModel(modelRepository.findById(2L).orElse(null))
                 .setPrice(233322)
-                .setSeller(userRepository.findByUsername("taurus366"))
+                .setSeller(userRepository.findByUsername("taurus366").get())
                 .setTransmission(TransmissionTypeEnum.AUTOMATIC)
                 .setYear(2021);
         offerRepository.save(offer2);

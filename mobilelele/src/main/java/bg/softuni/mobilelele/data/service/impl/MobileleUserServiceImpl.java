@@ -34,8 +34,7 @@ public class MobileleUserServiceImpl implements UserDetailsService {
         UserEntity userEntity = userRepository
                 .findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User with that name " + username + " not found!"));
-
-        return null;
+        return mapToUserDetails(userEntity);
     }
 
     private static UserDetails mapToUserDetails(UserEntity user){

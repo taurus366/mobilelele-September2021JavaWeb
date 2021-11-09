@@ -28,7 +28,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 // with this line we allow access to all static resources
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 // the next line allows access to the home page, login page and registration for everyone
-                .antMatchers("/","/users/login", "/users/registration").permitAll()
+                .antMatchers("/","/users/login", "/users/register").permitAll()
                 // next we forbid all other pages for unauthenticated users.
                 .antMatchers("/**").authenticated()
     // PERMISSION ALLOWED ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ PERMISSION ALLOWED
@@ -53,7 +53,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
     // LOGOUT ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LOGOUT
                 .logout()
                 // This is the URL which spring will implement form for me and will log the user out.
-                .logoutUrl("/logout")
+                .logoutUrl("/users/logout")
                 // where to go after the logout.
                 .logoutSuccessUrl("/")
                 // remove the session from server
