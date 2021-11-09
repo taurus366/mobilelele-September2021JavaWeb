@@ -23,7 +23,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/offers/all">All Offers</a>
                 </li>
-                <li th:if="${@currentUser.isAdmin()}" class="nav-item dropdown">
+<!--                <li th:if="${@currentUser.isAdmin()}" class="nav-item dropdown">-->
                     <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Admin
@@ -38,18 +38,18 @@
 
 <!--                Logout place !!!!!!!!!!!!!!!! ___________-->
 
-                <li class="nav-item" th:if="${@currentUser.isLoggedIn()}">
+<!--                <li class="nav-item" th:if="${@currentUser.isLoggedIn()}">-->
                     <div class="form-inline my-2 my-lg-0 border px-3">
-                        <div>Welcome,<th:block th:text="${@currentUser.getFirstName()}" ></th:block> </div>
+<!--                        <div>Welcome,<th:block th:text="${@currentUser.getFirstName()}" ></th:block> </div>-->
                         <a class="nav-link" th:href="@{/users/logout}" >Logout</a>
                     </div>
                 </li>
                 <!--                Register place !!!!!!!!!!!!!!!! ___________-->
-                <li th:unless="${@currentUser.isLoggedIn()}" class="nav-item">
+<!--                <li th:unless="${@currentUser.isLoggedIn()}" class="nav-item">-->
                     <a class="nav-link" href="/users/register">Register</a>
                 </li>
                 <!--                Login place !!!!!!!!!!!!!!!! ___________-->
-                <li th:unless="${@currentUser.isLoggedIn()}" class="nav-item">
+<!--                <li th:unless="${@currentUser.isLoggedIn()}" class="nav-item">-->
                     <a class="nav-link" href="/users/login">Login</a>
                 </li>
 

@@ -7,10 +7,6 @@ public interface UserService {
 
      void initializeUsers();
 
-     boolean login(UserLoginServiceModel userLoginServiceModel);
-
-     void logOut();
-
      void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel);
 
      boolean isUsernameFree(String username);

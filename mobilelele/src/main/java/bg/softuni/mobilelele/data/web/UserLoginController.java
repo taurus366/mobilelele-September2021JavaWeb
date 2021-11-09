@@ -37,20 +37,20 @@ public class UserLoginController {
     public String login(UserLoginBindingModel userLoginBindingModel) {
 
               // Delegate the logic to the service layer
-       boolean loginSuccessful =  userService
-                .login(new UserLoginServiceModel()
-                        .setUsername(userLoginBindingModel
-                                .getUsername())
-                        .setRawPassword(userLoginBindingModel
-                                .getPassword()));
+//       boolean loginSuccessful =  userService
+//                .login(new UserLoginServiceModel()
+//                        .setUsername(userLoginBindingModel
+//                                .getUsername())
+//                        .setRawPassword(userLoginBindingModel
+//                                .getPassword()));
 
-        logger.info("User tried to login. User with name {} tried to login. Success = ${}?",
-                userLoginBindingModel.getUsername(),
-                loginSuccessful);
+//        logger.info("User tried to login. User with name {} tried to login. Success = ${}?",
+//                userLoginBindingModel.getUsername(),
+//                loginSuccessful);
 
-        if (loginSuccessful){
-            return "redirect:/";
-        }
+//        if (loginSuccessful){
+//            return "redirect:/";
+//        }
 
 //        return "redirect:/index";
         return "redirect:/users/login";
