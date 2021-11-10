@@ -101,7 +101,7 @@ public class DBinit implements CommandLineRunner {
     }
 
     private void initializeBrandAndModels() throws JsonProcessingException {
-        //        if (brandRepository.count() == 0){
+                if (brandRepository.count() == 0){
         BrandEntity brand = new BrandEntity().setName("Ford");
 
         ModelEntity fiesta = new ModelEntity();
@@ -127,7 +127,7 @@ public class DBinit implements CommandLineRunner {
         this.brandRepository.save(brand);
 
         System.out.println(objectMapper.writeValueAsString(new ModelEntity().setName("fiesta").setBrand(new BrandEntity().setName("brand"))));
-//        }
+        }
 
     }
 }

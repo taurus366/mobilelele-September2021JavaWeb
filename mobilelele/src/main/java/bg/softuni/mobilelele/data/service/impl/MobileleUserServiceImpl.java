@@ -51,7 +51,7 @@ public class MobileleUserServiceImpl implements UserDetailsService {
 
         // User is the spring implementation of UserDetails interface.
 
-        return new User(
+        return new MobileleUser(
                 user.getUsername(),
                 user.getPassword(),
                 authorities

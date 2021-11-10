@@ -2,7 +2,11 @@ package bg.softuni.mobilelele.data.service.impl;
 
 import bg.softuni.mobilelele.data.enums.EngineTypeEnum;
 import bg.softuni.mobilelele.data.enums.TransmissionTypeEnum;
+import bg.softuni.mobilelele.data.model.binding.OfferAddBindingModel;
+import bg.softuni.mobilelele.data.model.entity.ModelEntity;
 import bg.softuni.mobilelele.data.model.entity.OfferEntity;
+import bg.softuni.mobilelele.data.model.entity.UserEntity;
+import bg.softuni.mobilelele.data.model.service.OfferAddServiceModel;
 import bg.softuni.mobilelele.data.model.service.OfferUpdateServiceModel;
 import bg.softuni.mobilelele.data.model.view.OfferDetailsView;
 import bg.softuni.mobilelele.data.model.view.OfferSummaryView;
@@ -14,6 +18,7 @@ import bg.softuni.mobilelele.data.web.exception.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,31 +40,33 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public void initializedOffers() {
-        OfferEntity offer1 = new OfferEntity();
+       if (offerRepository.count() == 0){
+           OfferEntity offer1 = new OfferEntity();
 
-        offer1.setDescription("testDescription")
-                .setEngine(EngineTypeEnum.DIESEL)
-                .setImageUrl("https://lh3.googleusercontent.com/proxy/FeRVYXyR_3nDJp-1bjuOtwiRssnS_aF8BnOZcjRME0_OucFv2G8p1N1jlPT-DGmkHbPMqJ7K4rFL1S9ac0pkdQ")
-                .setMileage(200000)
-                .setModel(modelRepository.findById(1L).orElse(null))
-                .setPrice(222)
-                .setSeller(userRepository.findByUsername("taurus366").get())
-                .setTransmission(TransmissionTypeEnum.AUTOMATIC)
-                .setYear(1995);
-        offerRepository.save(offer1);
+           offer1.setDescription("testDescription")
+                   .setEngine(EngineTypeEnum.DIESEL)
+                   .setImageUrl("https://lh3.googleusercontent.com/proxy/FeRVYXyR_3nDJp-1bjuOtwiRssnS_aF8BnOZcjRME0_OucFv2G8p1N1jlPT-DGmkHbPMqJ7K4rFL1S9ac0pkdQ")
+                   .setMileage(200000)
+                   .setModel(modelRepository.findById(1L).orElse(null))
+                   .setPrice(222)
+                   .setSeller(userRepository.findByUsername("taurus366").get())
+                   .setTransmission(TransmissionTypeEnum.AUTOMATIC)
+                   .setYear(1995);
+           offerRepository.save(offer1);
 
-        OfferEntity offer2 = new OfferEntity();
+           OfferEntity offer2 = new OfferEntity();
 
-        offer2.setDescription("testDescription")
-                .setEngine(EngineTypeEnum.DIESEL)
-                .setImageUrl("http://images.unsplash.com/flagged/photo-1553505192-acca7d4509be?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max")
-                .setMileage(2000)
-                .setModel(modelRepository.findById(2L).orElse(null))
-                .setPrice(233322)
-                .setSeller(userRepository.findByUsername("taurus366").get())
-                .setTransmission(TransmissionTypeEnum.AUTOMATIC)
-                .setYear(2021);
-        offerRepository.save(offer2);
+           offer2.setDescription("testDescription")
+                   .setEngine(EngineTypeEnum.DIESEL)
+                   .setImageUrl("http://images.unsplash.com/flagged/photo-1553505192-acca7d4509be?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max")
+                   .setMileage(2000)
+                   .setModel(modelRepository.findById(2L).orElse(null))
+                   .setPrice(233322)
+                   .setSeller(userRepository.findByUsername("taurus366").get())
+                   .setTransmission(TransmissionTypeEnum.AUTOMATIC)
+                   .setYear(2021);
+           offerRepository.save(offer2);
+       }
     }
 
     @Override
@@ -98,6 +105,32 @@ public class OfferServiceImpl implements OfferService {
                 .setModified(Instant.now());
 
         offerRepository.save(offerEntity);
+    }
+
+//    @Override
+//    public OfferAddServiceModel addOffer(OfferAddBindingModel offerAddBindingModel, Principal principal) {
+//        return null;
+//    }
+
+    @Override
+    public OfferAddServiceModel addOffer(OfferAddBindingModel offerAddBindingModel, String sellerUsername) {
+//        UserEntity userEntity = userRepository.findByUsername(ownerId).orElseThrow();
+
+        OfferAddServiceModel offerAddServiceModel = modelMapper.map(offerAddBindingModel, OfferAddServiceModel.class);
+
+        OfferEntity newOffer = modelMapper.map(offerAddServiceModel, OfferEntity.class);
+
+        newOffer.setCreated(Instant.now());
+//        newOffer.setSeller(userEntity);
+        newOffer.setSeller(userRepository.findByUsername(sellerUsername).orElseThrow());
+
+        ModelEntity model = modelRepository.getById(offerAddBindingModel.getModelId());
+
+        newOffer.setModel(model);
+
+        OfferEntity savedOffer = offerRepository.save(newOffer);
+
+        return modelMapper.map(savedOffer, OfferAddServiceModel.class);
     }
 
     private OfferSummaryView offerSummaryViewMap(OfferEntity offerEntity) {
