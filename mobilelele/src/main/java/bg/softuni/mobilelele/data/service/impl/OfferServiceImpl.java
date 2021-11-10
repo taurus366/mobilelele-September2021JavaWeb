@@ -1,7 +1,7 @@
 package bg.softuni.mobilelele.data.service.impl;
 
-import bg.softuni.mobilelele.data.enums.EngineTypeEnum;
-import bg.softuni.mobilelele.data.enums.TransmissionTypeEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.EngineEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.TransmissionEnum;
 import bg.softuni.mobilelele.data.model.binding.OfferAddBindingModel;
 import bg.softuni.mobilelele.data.model.entity.ModelEntity;
 import bg.softuni.mobilelele.data.model.entity.OfferEntity;
@@ -44,26 +44,26 @@ public class OfferServiceImpl implements OfferService {
            OfferEntity offer1 = new OfferEntity();
 
            offer1.setDescription("testDescription")
-                   .setEngine(EngineTypeEnum.DIESEL)
+                   .setEngine(EngineEnum.DIESEL)
                    .setImageUrl("https://lh3.googleusercontent.com/proxy/FeRVYXyR_3nDJp-1bjuOtwiRssnS_aF8BnOZcjRME0_OucFv2G8p1N1jlPT-DGmkHbPMqJ7K4rFL1S9ac0pkdQ")
                    .setMileage(200000)
                    .setModel(modelRepository.findById(1L).orElse(null))
                    .setPrice(222)
                    .setSeller(userRepository.findByUsername("taurus366").get())
-                   .setTransmission(TransmissionTypeEnum.AUTOMATIC)
+                   .setTransmission(TransmissionEnum.AUTOMATIC)
                    .setYear(1995);
            offerRepository.save(offer1);
 
            OfferEntity offer2 = new OfferEntity();
 
            offer2.setDescription("testDescription")
-                   .setEngine(EngineTypeEnum.DIESEL)
+                   .setEngine(EngineEnum.DIESEL)
                    .setImageUrl("http://images.unsplash.com/flagged/photo-1553505192-acca7d4509be?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max")
                    .setMileage(2000)
                    .setModel(modelRepository.findById(2L).orElse(null))
                    .setPrice(233322)
                    .setSeller(userRepository.findByUsername("taurus366").get())
-                   .setTransmission(TransmissionTypeEnum.AUTOMATIC)
+                   .setTransmission(TransmissionEnum.AUTOMATIC)
                    .setYear(2021);
            offerRepository.save(offer2);
        }

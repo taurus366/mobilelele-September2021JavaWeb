@@ -1,7 +1,7 @@
 package bg.softuni.mobilelele.data.model.view;
 
-import bg.softuni.mobilelele.data.enums.EngineTypeEnum;
-import bg.softuni.mobilelele.data.enums.TransmissionTypeEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.EngineEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.TransmissionEnum;
 import bg.softuni.mobilelele.data.model.entity.ModelEntity;
 import bg.softuni.mobilelele.data.model.entity.UserEntity;
 
@@ -14,7 +14,7 @@ public class OfferSummaryView {
 
     private long id;
     private String description;
-    private EngineTypeEnum engine;
+    private EngineEnum engine;
     private String imageUrl;
     private Integer mileage;
     private Integer price;
@@ -40,11 +40,11 @@ public class OfferSummaryView {
         return this;
     }
 
-    public EngineTypeEnum getEngine() {
+    public EngineEnum getEngine() {
         return engine;
     }
 
-    public OfferSummaryView setEngine(EngineTypeEnum engine) {
+    public OfferSummaryView setEngine(EngineEnum engine) {
         this.engine = engine;
         return this;
     }

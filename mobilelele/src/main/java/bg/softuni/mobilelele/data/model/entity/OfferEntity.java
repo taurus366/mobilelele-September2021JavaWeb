@@ -1,7 +1,7 @@
 package bg.softuni.mobilelele.data.model.entity;
 
-import bg.softuni.mobilelele.data.enums.EngineTypeEnum;
-import bg.softuni.mobilelele.data.enums.TransmissionTypeEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.EngineEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.TransmissionEnum;
 import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
@@ -14,14 +14,14 @@ public class OfferEntity extends BaseEntity {
     private String description;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private EngineTypeEnum engine;
+    private EngineEnum engine;
     @Column(nullable = false)
     private String imageUrl;
     private Integer mileage;
     private Integer price;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private TransmissionTypeEnum transmission;
+    private TransmissionEnum transmission;
     private int year;
     @ManyToOne
     private ModelEntity model;
@@ -37,12 +37,21 @@ public class OfferEntity extends BaseEntity {
         return this;
     }
 
-    public EngineTypeEnum getEngine() {
+    public EngineEnum getEngine() {
         return engine;
     }
 
-    public OfferEntity setEngine(EngineTypeEnum engine) {
+    public OfferEntity setEngine(EngineEnum engine) {
         this.engine = engine;
+        return this;
+    }
+
+    public TransmissionEnum getTransmission() {
+        return transmission;
+    }
+
+    public OfferEntity setTransmission(TransmissionEnum transmission) {
+        this.transmission = transmission;
         return this;
     }
 
@@ -73,14 +82,7 @@ public class OfferEntity extends BaseEntity {
         return this;
     }
 
-    public TransmissionTypeEnum getTransmission() {
-        return transmission;
-    }
 
-    public OfferEntity setTransmission(TransmissionTypeEnum transmission) {
-        this.transmission = transmission;
-        return this;
-    }
 
     public int getYear() {
         return year;

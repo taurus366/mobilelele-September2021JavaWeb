@@ -1,7 +1,8 @@
 package bg.softuni.mobilelele.data.init;
 
-import bg.softuni.mobilelele.data.enums.CategoryEnum;
-import bg.softuni.mobilelele.data.enums.UserRoleEnum;
+
+import bg.softuni.mobilelele.data.model.entity.enums.CategoryEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.UserRoleEnum;
 import bg.softuni.mobilelele.data.model.entity.*;
 import bg.softuni.mobilelele.data.repository.BrandRepository;
 import bg.softuni.mobilelele.data.repository.OfferRepository;
@@ -62,7 +63,6 @@ public class DBinit implements CommandLineRunner {
 
             UserRoleEntity adminRole = userRoleRepository.findByRole(UserRoleEnum.ADMIN);
             UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
-
 
 
             UserEntity admin = new UserEntity();

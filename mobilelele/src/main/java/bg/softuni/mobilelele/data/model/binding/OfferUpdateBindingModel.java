@@ -1,7 +1,7 @@
 package bg.softuni.mobilelele.data.model.binding;
 
-import bg.softuni.mobilelele.data.enums.EngineTypeEnum;
-import bg.softuni.mobilelele.data.enums.TransmissionTypeEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.EngineEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.TransmissionEnum;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.validation.constraints.*;
@@ -14,7 +14,7 @@ public class OfferUpdateBindingModel {
     private String description;
 
     @NotNull
-    private EngineTypeEnum engine;
+    private EngineEnum engine;
 
     @NotBlank
     private String imageUrl;
@@ -28,7 +28,7 @@ public class OfferUpdateBindingModel {
     private Integer price;
 
     @NotNull
-    private TransmissionTypeEnum transmission;
+    private EngineEnum transmission;
 
     @NotNull
     @Min(1930)
@@ -53,12 +53,37 @@ public class OfferUpdateBindingModel {
         this.description = description;
     }
 
-    public EngineTypeEnum getEngine() {
+    public EngineEnum getEngine() {
         return engine;
     }
 
-    public void setEngine(EngineTypeEnum engine) {
+    public OfferUpdateBindingModel setEngine(EngineEnum engine) {
         this.engine = engine;
+        return this;
+    }
+
+    public OfferUpdateBindingModel setMileage(Integer mileage) {
+        this.mileage = mileage;
+        return this;
+    }
+
+    public OfferUpdateBindingModel setPrice(Integer price) {
+        this.price = price;
+        return this;
+    }
+
+    public EngineEnum getTransmission() {
+        return transmission;
+    }
+
+    public OfferUpdateBindingModel setTransmission(EngineEnum transmission) {
+        this.transmission = transmission;
+        return this;
+    }
+
+    public OfferUpdateBindingModel setYear(Integer year) {
+        this.year = year;
+        return this;
     }
 
     public String getImageUrl() {
@@ -85,13 +110,7 @@ public class OfferUpdateBindingModel {
         this.price = price;
     }
 
-    public TransmissionTypeEnum getTransmission() {
-        return transmission;
-    }
 
-    public void setTransmission(TransmissionTypeEnum transmission) {
-        this.transmission = transmission;
-    }
 
     public int getYear() {
         return year;

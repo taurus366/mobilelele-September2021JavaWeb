@@ -1,20 +1,20 @@
 package bg.softuni.mobilelele.data.model.view;
 
-import bg.softuni.mobilelele.data.enums.EngineTypeEnum;
-import bg.softuni.mobilelele.data.enums.TransmissionTypeEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.EngineEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.TransmissionEnum;
 
 import java.time.Instant;
 
 public class OfferDetailsView {
     private String description;
-    private EngineTypeEnum engineTypeEnum;
+    private EngineEnum engineTypeEnum;
     private Instant created;
     private Instant modified;
     private String imageUrl;
     private int mileage;
     private String sellerFullName;
     private int price;
-    private TransmissionTypeEnum transmission;
+    private EngineEnum transmission;
     private int year;
     private String model;
     private String brand;
@@ -32,14 +32,7 @@ public class OfferDetailsView {
         return this;
     }
 
-    public EngineTypeEnum getEngineTypeEnum() {
-        return engineTypeEnum;
-    }
 
-    public OfferDetailsView setEngineTypeEnum(EngineTypeEnum engineTypeEnum) {
-        this.engineTypeEnum = engineTypeEnum;
-        return this;
-    }
 
     public Instant getCreated() {
         return created;
@@ -95,11 +88,20 @@ public class OfferDetailsView {
         return this;
     }
 
-    public TransmissionTypeEnum getTransmission() {
+    public EngineEnum getEngineTypeEnum() {
+        return engineTypeEnum;
+    }
+
+    public OfferDetailsView setEngineTypeEnum(EngineEnum engineTypeEnum) {
+        this.engineTypeEnum = engineTypeEnum;
+        return this;
+    }
+
+    public EngineEnum getTransmission() {
         return transmission;
     }
 
-    public OfferDetailsView setTransmission(TransmissionTypeEnum transmission) {
+    public OfferDetailsView setTransmission(EngineEnum transmission) {
         this.transmission = transmission;
         return this;
     }

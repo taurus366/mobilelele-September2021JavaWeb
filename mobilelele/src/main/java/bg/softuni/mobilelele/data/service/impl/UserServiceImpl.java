@@ -1,6 +1,6 @@
 package bg.softuni.mobilelele.data.service.impl;
 
-import bg.softuni.mobilelele.data.enums.UserRoleEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.UserRoleEnum;
 import bg.softuni.mobilelele.data.model.entity.UserEntity;
 import bg.softuni.mobilelele.data.model.entity.UserRoleEntity;
 import bg.softuni.mobilelele.data.model.service.UserLoginServiceModel;

@@ -1,7 +1,7 @@
 package bg.softuni.mobilelele.data.web;
 
-import bg.softuni.mobilelele.data.enums.EngineTypeEnum;
-import bg.softuni.mobilelele.data.enums.TransmissionTypeEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.EngineEnum;
+import bg.softuni.mobilelele.data.model.entity.enums.TransmissionEnum;
 import bg.softuni.mobilelele.data.model.binding.OfferAddBindingModel;
 import bg.softuni.mobilelele.data.model.binding.OfferUpdateBindingModel;
 import bg.softuni.mobilelele.data.model.service.OfferAddServiceModel;
@@ -97,8 +97,8 @@ public class OfferController {
 
         model
                 .addAttribute("offerModel", map)
-                .addAttribute("engines", EngineTypeEnum.values())
-                .addAttribute("transmissions", TransmissionTypeEnum.values());
+                .addAttribute("engines", EngineEnum.values())
+                .addAttribute("transmissions", TransmissionEnum.values());
 
         return "update";
     }
@@ -107,8 +107,8 @@ public class OfferController {
     public String editOfferErrors(@PathVariable Long id,Model model){
 
         model
-                .addAttribute("engines", EngineTypeEnum.values())
-                .addAttribute("transmissions", TransmissionTypeEnum.values());
+                .addAttribute("engines", EngineEnum.values())
+                .addAttribute("transmissions", TransmissionEnum.values());
 
         return "update";
     }
