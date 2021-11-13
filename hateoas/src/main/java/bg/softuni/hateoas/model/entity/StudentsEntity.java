@@ -1,0 +1,60 @@
+package bg.softuni.hateoas.model.entity;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "students")
+public class StudentsEntity {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private int age;
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    private List<OrderEntity> orders = new ArrayList<>();
+
+    public StudentsEntity() {
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public StudentsEntity setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public StudentsEntity setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public StudentsEntity setAge(int age) {
+        this.age = age;
+        return this;
+    }
+
+    public List<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public StudentsEntity setOrders(List<OrderEntity> orders) {
+        this.orders = orders;
+        return this;
+    }
+}
