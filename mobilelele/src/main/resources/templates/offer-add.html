@@ -46,7 +46,7 @@
                 <label class="text-center text-white font-weight-bold" for="engine">Engine</label>
                 <select id="engine" class="form-control" th:field="*{engine}">
                     <option value="">- Select engine type -</option>
-                    <option th:each="engineType :  ${T(bg.softuni.mobilelele.data.enums.EngineTypeEnum).values()}" th:text="${engineType}" th:value="${engineType}" th:selected="${engineType} == *{engine}">
+                    <option th:each="engineType :  ${T(bg.softuni.mobilelele.data.model.entity.enums.EngineEnum).values()}" th:text="${engineType}" th:value="${engineType}" th:selected="${engineType} == *{engine}">
                         Engine type
                     </option>
                 </select>
@@ -58,7 +58,7 @@
                 <label class="text-center text-white font-weight-bold" for="transmission">Transmission</label>
                 <select id="transmission" class="form-control" th:errorclass="is-invalid" th:field="*{transmission}">
                     <option value="">- Select transmission type -</option>
-                    <option th:each="transmission : ${T(bg.softuni.mobilelele.data.enums.TransmissionTypeEnum).values()}" th:text="${transmission}" th:value="${transmission}" th:selected="${transmission} == *{transmission}"> Transmission type
+                    <option th:each="transmission : ${T(bg.softuni.mobilelele.data.model.entity.enums.TransmissionEnum).values()}" th:text="${transmission}" th:value="${transmission}" th:selected="${transmission} == *{transmission}"> Transmission type
                     </option>
                 </select>
                 <p class="errors alert alert-danger invalid-feedback">
