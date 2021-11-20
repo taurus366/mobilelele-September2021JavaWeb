@@ -2,6 +2,7 @@ package bg.softuni.books.web;
 
 import bg.softuni.books.model.dto.BookDTO;
 import bg.softuni.books.service.BookService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -68,6 +69,15 @@ public class BooksController {
     public ResponseEntity<BookDTO> update(@PathVariable Long id, @RequestBody BookDTO bookDTO){
     //todo
         throw new UnsupportedOperationException("coming soon!");
+    }
+
+    @GetMapping("/pageable")
+    public ResponseEntity<Page<BookDTO>> getBooks(
+            @RequestParam(name= "pageNo", defaultValue = "0") Integer pageNo,
+            @RequestParam(name = "pageSize", defaultValue = "3") Integer pageSize,
+            @RequestParam(name = "sortBy", defaultValue = "id") String sortBy
+    ){
+            return ResponseEntity.ok(bookService.getBooks(pageNo,pageSize,sortBy));
     }
 
 }
